@@ -25,7 +25,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack == null)
+            if (stack == null || stack.getItem() == null)
                 continue;
             // If it isn't a tool and it's not an upgrade, false
             if (!stack.getItem().isItemTool(stack) && !stack.getItem().equals(ArtificeItems.itemUpgrade))
@@ -40,7 +40,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().isItemTool(stack))
+            if (stack != null && stack.getItem() != null && stack.getItem().isItemTool(stack))
                 this.output = stack.copy();
         }
 
@@ -48,7 +48,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
+            if (stack != null && stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
                 numUpgrades++;
         }
         if (numUpgrades == 0)
@@ -61,7 +61,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
+            if (stack != null && stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
             {
                 Enchantment enchant;
                 int maxLevel = 0;

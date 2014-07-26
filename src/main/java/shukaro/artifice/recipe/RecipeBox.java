@@ -26,7 +26,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
+            if (stack != null && stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemBox))
             {
                 hasBox = true;
                 // Is it an empty box?
@@ -42,7 +42,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
+            if (stack != null && stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemBox))
                 c++;
         }
         if (c != 1)
@@ -55,14 +55,14 @@ public class RecipeBox implements IRecipe
             for (int i = 0; i < craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && !stack.getItem().equals(ArtificeItems.itemBox))
+                if (stack != null && stack.getItem() != null && !stack.getItem().equals(ArtificeItems.itemBox))
                     return false;
             }
             // There's one full box in the grid, set it
             for (int i = 0; i < craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
+                if (stack != null && stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemBox))
                     box = stack;
             }
 
@@ -99,7 +99,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && !stack.getItem().equals(ArtificeItems.itemBox))
+            if (stack != null && stack.getItem() != null && !stack.getItem().equals(ArtificeItems.itemBox))
             {
                 thing = stack;
                 break;
@@ -119,7 +119,7 @@ public class RecipeBox implements IRecipe
             if (stack != null)
             {
                 ComparableItemStackNBT t = new ComparableItemStackNBT(stack);
-                if (stack.getItem().equals(ArtificeItems.itemBox))
+                if (stack.getItem() != null && stack.getItem().equals(ArtificeItems.itemBox))
                     continue;
                 else if (t.isStackEqual(contents))
                     num++;
