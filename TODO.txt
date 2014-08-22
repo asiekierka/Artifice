@@ -1,4 +1,3 @@
-Lamps - Connected textured colored lights
 Text Commands
 Pyrolysis Chamber - Wood > Charcoal, Coal > Coke, Biomass > Biofuel, Charcoal > Crude Gas, etc
 Crucible - Ores > Liquid Metal + Slag, Alloys, etc
@@ -28,7 +27,6 @@ Generators - Mechanical power > electricity
 Smoker - Meat cooking, hunger, whatever
 Block extruder
 Vanilla stone pavers
-Means to get cracked/mossy/etc stone
 Parallel bee/tree breeding
 More plants and trees
 Cave world type
@@ -38,10 +36,9 @@ Steel gear
 Piggybanks
 Coinsleeves
 Soundproofing
-Additional pistons
+Steel piston
 Electromagnets
 Steel hoppers
-Coremod connected textures
 Additional enchantments
 Tool/weapon oils/poisons
 Instruments
@@ -49,11 +46,9 @@ Analog Detectors
 Lightning strike effects
 Lightning rods
 Visual area markers
-Light blocking glass
 Geographic features
 Alchemy system
 Villager chatter
 Robotic shopkeepers
 Seed bags
 Sign tools
-API (with IMC)

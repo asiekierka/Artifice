@@ -13,11 +13,11 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.render.TextureHandler;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class ItemSledge extends ItemTool
     public ItemSledge(Item.ToolMaterial mat)
     {
         super(2, mat, null);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
         this.setMaxDamage(mat.getMaxUses() / 4);
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);
@@ -62,7 +62,7 @@ public class ItemSledge extends ItemTool
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
+        NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -82,7 +82,7 @@ public class ItemSledge extends ItemTool
             return true;
         for (int i = 0; i < 16; i++)
         {
-            if (ArtificeRegistry.getSledgeBlocks().get(new ItemMetaPair(block, i)) != null)
+            if (ArtificeRegistry.getSledgeBlocks().get(new NameMetaPair(block, i)) != null)
                 return true;
         }
         return false;
@@ -96,7 +96,7 @@ public class ItemSledge extends ItemTool
             return this.toolMaterial.getEfficiencyOnProperMaterial();
         for (int i = 0; i < 16; i++)
         {
-            if (ArtificeRegistry.getSledgeBlocks().get(new ItemMetaPair(block, i)) != null)
+            if (ArtificeRegistry.getSledgeBlocks().get(new NameMetaPair(block, i)) != null)
                 return this.toolMaterial.getEfficiencyOnProperMaterial();
         }
         return 1.0F;
@@ -113,7 +113,7 @@ public class ItemSledge extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
+        this.icon = TextureHandler.registerIcon(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
     }
 
     @Override
@@ -127,7 +127,7 @@ public class ItemSledge extends ItemTool
         {
             Block block = world.getBlock(x, y, z);
             int meta = world.getBlockMetadata(x, y, z);
-            ItemMetaPair pair = new ItemMetaPair(block, meta);
+            NameMetaPair pair = new NameMetaPair(block, meta);
 
             ArrayList<ItemStack> dropped = ArtificeRegistry.getWildSledgeBlocks().get(block);
             if (dropped == null)
@@ -154,7 +154,7 @@ public class ItemSledge extends ItemTool
     public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity)
     {
         int meta = world.getBlockMetadata(x, y, z);
-        ItemMetaPair pair = new ItemMetaPair(block, meta);
+        NameMetaPair pair = new NameMetaPair(block, meta);
 
         if (entity instanceof EntityPlayer)
         {

@@ -18,9 +18,9 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.FormatCodes;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class ItemBox extends ItemArtifice
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "box", "box");
+        this.icon = TextureHandler.registerIcon(reg, "box", "box");
     }
 
     @Override
@@ -183,7 +183,7 @@ public class ItemBox extends ItemArtifice
     {
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
+            NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -205,8 +205,8 @@ public class ItemBox extends ItemArtifice
             {
                 for (int i = 0; i < enchants.tagCount(); i++)
                 {
-                    short id = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("id");
-                    short lvl = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("lvl");
+                    short id = enchants.getCompoundTagAt(i).getShort("id");
+                    short lvl = enchants.getCompoundTagAt(i).getShort("lvl");
                     if (Enchantment.enchantmentsList[id] != null)
                     {
                         infoList.add(FormatCodes.Yellow.code + Enchantment.enchantmentsList[id].getTranslatedName(lvl));
@@ -216,7 +216,7 @@ public class ItemBox extends ItemArtifice
         }
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
+            NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))

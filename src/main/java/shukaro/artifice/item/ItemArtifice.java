@@ -9,10 +9,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public abstract class ItemArtifice extends Item
     {
         super();
         this.setHasSubtypes(true);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
     }
 
     @Override
@@ -46,7 +46,7 @@ public abstract class ItemArtifice extends Item
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), stack.getItemDamage());
+        NameMetaPair pair = new NameMetaPair(stack.getItem(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

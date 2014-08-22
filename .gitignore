@@ -1,7 +1,9 @@
 # Ignore Gradle cache files & directories
 bin/
 build/
+libs/
 eclipse/
+minecraft/
 .classpath
 .gradle/
 .project
