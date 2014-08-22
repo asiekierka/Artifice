@@ -6,6 +6,8 @@ import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
 
 import java.io.IOException;
+import pl.asie.lib.network.Packet;
+import pl.asie.lib.network.MessageHandlerBase;
 
 public class ClientPacketHandler extends MessageHandlerBase
 {

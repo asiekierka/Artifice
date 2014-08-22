@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
+import pl.asie.lib.network.Packet;
 
 public class PacketDispatcher
 {

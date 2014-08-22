@@ -8,8 +8,6 @@ import net.minecraft.network.INetHandler;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeClientEventHandler;
 import shukaro.artifice.event.ArtificeClientTickHandler;
-import shukaro.artifice.net.MessageHandlerBase;
-import shukaro.artifice.net.Packet;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.LotusRenderer;
 import shukaro.artifice.util.BlockCoord;
@@ -31,20 +29,5 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(ArtificeConfig.frameRenderID, new FrameRenderer());
 
         ArtificeCore.textureCache = new ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>>();
-    }
-
-    @Override
-    public void handlePacket(MessageHandlerBase client, MessageHandlerBase server, Packet packet, INetHandler handler)
-    {
-        switch (FMLCommonHandler.instance().getEffectiveSide())
-        {
-            case CLIENT:
-                if (client != null)
-                    client.onMessage(packet, handler, (EntityPlayer) Minecraft.getMinecraft().thePlayer);
-                break;
-            case SERVER:
-                super.handlePacket(client, server, packet, handler);
-                break;
-        }
     }
 }

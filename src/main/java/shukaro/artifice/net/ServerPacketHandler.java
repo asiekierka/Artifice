@@ -4,6 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
 
 import java.io.IOException;
+import pl.asie.lib.network.Packet;
+import pl.asie.lib.network.MessageHandlerBase;
 
 public class ServerPacketHandler extends MessageHandlerBase
 {

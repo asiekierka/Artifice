@@ -13,12 +13,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
+
 import org.apache.logging.log4j.Logger;
+
+import pl.asie.lib.network.PacketHandler;
 import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.net.ClientPacketHandler;
-import shukaro.artifice.net.PacketHandler;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
@@ -65,6 +67,8 @@ public class ArtificeCore
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
+    	packet = new PacketHandler("artifice", new ClientPacketHandler(), new ServerPacketHandler());
+    	
         // init reflection
         try
         {
